@@ -8,7 +8,8 @@ if __name__ == "__main__":
 
     is_running = True
     while is_running:
-        print("Wellcome to The Lion Library!\nChoose from the menu:")
+        print()
+        print("*** Wellcome to The Lion Library! ***\nChoose from the menu:")
         print(" 1.add book\n 2.add user\n 3.borrow book\n 4.return book\n 5.get available books\n 6.search book\n 7.for exit")
         action = int(input("Enter here -> "))
 
@@ -35,10 +36,10 @@ if __name__ == "__main__":
             my_library.return_book(user_id, book_isbn)
 
         if action == 5: # list available books
-            Library.list_available_books(my_library)
+            my_library.list_available_books()
 
         if action == 6: # search_book
-            key = input("Enter book title/auther/isbn: ")
+            key = input("Enter some letters from title author to search: ")
             my_library.search_book(key)
 
         if action == 7: # exit
