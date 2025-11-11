@@ -1,3 +1,4 @@
+import json
 from book import Book
 from user import User
 
@@ -8,10 +9,24 @@ class Library:
 
     def add_book(self, book:Book) -> str:
         self.list_of_books.append(book)
+
+        # write to json file as json
+        book_dict = {"title":book.title, "author":book.author, "isbn":book.isbn} # converse to dict
+        json_book = json.dumps(book_dict, indent=4) # converse to json
+        with open("books.json", "a") as file: # write to json
+            file.write(json_book)
+
         return "-> The book successfully added to library"
 
     def add_user(self, user:User) -> str:
         self.list_of_users.append(user)
+
+        # write to json file as json
+        user_dict = {"name": user.name, "id": user.id} # converse to dict
+        json_user = json.dumps(user_dict, indent=4) # converse to json
+        with open("users.json", "a") as file: # write to json
+            file.write(json_user)
+
         return "-> The user successfully added to library"
 
     def borrow_book(self, user_id:str, book_isbn:str) -> str:
